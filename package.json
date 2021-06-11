@@ -47,5 +47,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/martini97/eslint-plugin-force-theme-colors.git"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
   }
 }
