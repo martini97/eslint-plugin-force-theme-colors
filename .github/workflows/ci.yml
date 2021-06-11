@@ -4,21 +4,17 @@ on: [push, pull_request]
 
 jobs:
   main:
-    name: test (node ${{ matrix.node }})
+    name: ci
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node: [12, 13]
 
     steps:
       - name: checkout repo
         uses: actions/checkout@v1
 
-      - name: use node ${{ matrix.node }}
+      - name: setup node
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 12
 
       - name: install dependencies
         run: yarn
