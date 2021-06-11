@@ -7,6 +7,8 @@
   "license": "GPL-3.0-or-later",
   "homepage": "https://github.com/martini97/eslint-plugin-force-theme-colors",
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@types/eslint": "^7.2.13",
     "@types/estree": "^0.0.48",
     "@types/jest": "^26.0.23",
@@ -17,6 +19,7 @@
     "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
     "jest": "^27.0.4",
     "prettier": "^2.3.1",
     "resolve-from": "^5.0.0",
