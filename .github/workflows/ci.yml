@@ -28,6 +28,9 @@ jobs:
         env:
           CI: true
 
+      - name: commitlint
+        run: yarn run commitlint --from HEAD~${{ github.event.pull_request.commits }} --to HEAD
+
       - name: unit tests
         run: yarn test
         env:
