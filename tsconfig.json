@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "lib": ["esnext"],
+    "esModuleInterop": true,
+    "declaration": false,
+    "declarationMap": false,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "resolveJsonModule": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
