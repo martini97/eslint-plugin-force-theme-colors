@@ -4,9 +4,7 @@ import rules from '../../src/rules';
 
 const ruleTester = new TSESLint.RuleTester({
   parser: resolveFrom(require.resolve('eslint'), 'espree'),
-  parserOptions: {
-    ecmaVersion: 2015,
-  },
+  parserOptions: { ecmaVersion: 2015 },
 });
 
 ruleTester.run('force-theme-colors', rules.forceThemeColors, {

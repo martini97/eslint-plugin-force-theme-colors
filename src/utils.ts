@@ -5,7 +5,7 @@ import pkg from '../package.json';
 import { TSESTree } from '@typescript-eslint/experimental-utils';
 
 const cssColorRegx =
-  /(#[a-f0-9]{8}|#[a-f0-9]{6}|#[a-f0-9]{3}|rgb *\( *[0-9]{1,3}%? *, *[0-9]{1,3}%? *, *[0-9]{1,3}%? *\)|rgba *\( *[0-9]{1,3}%? *, *[0-9]{1,3}%? *, *[0-9]{1,3}%? *,\s?(0?.\d+|0|1)? *\))\s*/i;
+  /(#[a-f\d]{8}|#[a-f\d]{6}|#[a-f\d]{3}|rgb *\((?: *\d{1,3}%? *,){2} *\d{1,3}%? *\)|rgba *\((?: *\d{1,3}%? *,){3}\s?(0?.\d+|0|1)? *\))\s*/i;
 
 const cssColorKeywords = [
   'aliceblue',
