@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-force-theme-colors",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "Disallow defining colors outside the styled theme",
   "main": "./dist/index.js",
   "author": "Alessandro Martini <github.com/martini97>",
@@ -23,6 +23,7 @@
     "jest": "^27.0.4",
     "prettier": "^2.3.1",
     "resolve-from": "^5.0.0",
+    "semantic-release": "^17.4.3",
     "ts-jest": "^27.0.3",
     "ts-node": "^10.0.0",
     "tsup": "^4.11.2",
@@ -35,11 +36,16 @@
     "build": "tsup src/index.ts --no-splitting --minify",
     "commit": "cz",
     "lint": "eslint . --ext .ts",
-    "test": "jest"
+    "test": "jest",
+    "semantic-release": "semantic-release"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martini97/eslint-plugin-force-theme-colors.git"
   }
 }
