@@ -13,6 +13,27 @@ ruleTester.run('force-theme-colors', rules.forceThemeColors, {
     'const Component = styled.div`color: ${({ theme }) => theme.colors.red}`',
     'const myStyle = css`color: ${theme.colors.blue}`',
     'const Component = styled.div`color: ${theme.colors.red}`',
+    `const VirtualizedRow = styled(Link)\`
+  \${rowCSS}
+  height: \${({ size }) => \`\${size}px\`};
+  left: 0;
+  padding: 25px 20px;
+  position: absolute;
+  text-decoration: none;
+  text-transform: none;
+  top: 0;
+  transform: \${({ start }) => \`translateY(\${start}px)\`};
+  width: 100%;
+
+  span {
+    display: block;
+    height: 20px;
+    line-height: 20px !important;
+  }
+
+  :hover {
+    background: \${({ theme }) => hexToRGBA(theme.colors.warning, 0.2)};
+  }\``,
   ],
   invalid: [
     {
