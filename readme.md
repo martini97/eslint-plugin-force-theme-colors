@@ -3,6 +3,25 @@
 This plugin is meant to force the use of variables from the styled theme, and
 avoid using the color values directly.
 
+## usage
+
+Add the plugin to your eslint plugins, and set the rules or use the recommended
+config:
+
+```json
+{
+  // ... rest of config
+  "plugins": [
+    // ... other plugins
+    "force-theme-colors"
+  ],
+  "extends": [
+    // ... other extends
+    "plugin:force-theme-colors/recommended"
+  ]
+}
+```
+
 ## force-theme-colors
 
 Valid:
