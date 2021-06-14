@@ -6,7 +6,7 @@ const forceThemeColors = ESLintUtils.RuleCreator(generateDocsUrl)({
   name: 'force-theme-colors',
   meta: {
     type: 'suggestion',
-    schema: [],
+    schema: [{ rule: 'string', level: 'string' }],
     docs: {
       category: 'Best Practices',
       description: 'Disallow hardcoded colors for styled components.',
@@ -22,10 +22,18 @@ const forceThemeColors = ESLintUtils.RuleCreator(generateDocsUrl)({
       TaggedTemplateExpression(node: TSESTree.TaggedTemplateExpression) {
         if (!isStyledTagname(node)) return;
 
-        const styles = getNodeStyles(node);
-        const ternaryValues = getValuesFromTernary(node);
+        const ignore = context.options
+          .map((opt) => Object.entries(opt))
+          .flat()
+          .map(([rule, level]) => (level === 'ignore' ? rule : undefined))
+          .filter(Boolean);
+        const styles = getNodeStyles(node)
+          .split(';')
+          .map((s) => s.trim())
+          .filter((rule) => !ignore.includes(rule.split(':')[0]));
+        const ternaryValues = getValuesFromTernary(node, ignore);
 
-        if (!hasHardcodedColor(styles) && !ternaryValues.some(hasHardcodedColor)) return;
+        if (![...styles, ...ternaryValues].some(hasHardcodedColor)) return;
 
         context.report({
           node,
