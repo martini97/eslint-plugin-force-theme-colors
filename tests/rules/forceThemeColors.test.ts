@@ -34,6 +34,18 @@ ruleTester.run('force-theme-colors', rules.forceThemeColors, {
   :hover {
     background: \${({ theme }) => hexToRGBA(theme.colors.warning, 0.2)};
   }\``,
+    {
+      code: 'const myStyle = css`box-shadow: red;`',
+      options: [{ 'box-shadow': 'ignore' }],
+    },
+    {
+      code: 'const myStyle = css`box-shadow: red; color: red;`',
+      options: [{ 'box-shadow': 'ignore', color: 'ignore' }],
+    },
+    {
+      code: 'const myStyle = css`box-shadow: ${isRed ? "red" : "blue"};`',
+      options: [{ 'box-shadow': 'ignore' }],
+    },
   ],
   invalid: [
     {
@@ -65,6 +77,21 @@ ruleTester.run('force-theme-colors', rules.forceThemeColors, {
     color: black;
   }
 \``,
+      errors: [{ messageId: 'badColor' }],
+    },
+    {
+      code: 'const myStyle = css`box-shadow: red;`',
+      options: [{ shadow: 'ignore' }],
+      errors: [{ messageId: 'badColor' }],
+    },
+    {
+      code: 'const myStyle = css`background-color: red;`',
+      options: [{ color: 'ignore' }],
+      errors: [{ messageId: 'badColor' }],
+    },
+    {
+      code: 'const myStyle = css`background-color: ${isRed ? "red" : "blue"};`',
+      options: [{ color: 'ignore' }],
       errors: [{ messageId: 'badColor' }],
     },
   ],
