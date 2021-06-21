@@ -46,6 +46,25 @@ ruleTester.run('force-theme-colors', rules.forceThemeColors, {
       code: 'const myStyle = css`box-shadow: ${isRed ? "red" : "blue"};`',
       options: [{ 'box-shadow': 'ignore' }],
     },
+    `const Button = styled(BaseButton)\`
+  align-items: center;
+  border: none;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 15px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: auto;
+
+  \${({ float }) =>
+    float &&
+    \`
+    float: \${float};
+  \`}
+\`
+    `,
   ],
   invalid: [
     {
