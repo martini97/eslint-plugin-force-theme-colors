@@ -32,8 +32,16 @@ const forceThemeColors = ESLintUtils.RuleCreator(generateDocsUrl)({
           .map((s) => s.trim())
           .filter((rule) => !ignore.includes(rule.split(':')[0]));
         const ternaryValues = getValuesFromTernary(node, ignore);
+        const values = [...styles, ...ternaryValues]
+          .map((raw) => {
+            const [rule, ...valueList] = raw.split(':');
+            const value = valueList.map((s) => s.trim());
+            if (!value || value?.length === 0) return rule;
+            return value.join(':');
+          })
+          .filter(Boolean);
 
-        if (![...styles, ...ternaryValues].some(hasHardcodedColor)) return;
+        if (!values.some(hasHardcodedColor)) return;
 
         context.report({
           node,
