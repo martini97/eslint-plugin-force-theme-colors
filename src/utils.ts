@@ -180,9 +180,13 @@ export function getNodeStyles(node: TSESTree.TaggedTemplateExpression): string {
   return styles;
 }
 
-export function getValuesFromTernary(node: TSESTree.TaggedTemplateExpression): string[] {
+export function getValuesFromTernary(node: TSESTree.TaggedTemplateExpression, ignore: string[]): string[] {
   return node.quasi.expressions
-    .filter(({ type }) => type === 'ConditionalExpression')
+    .filter(
+      ({ type, parent }) =>
+        type === 'ConditionalExpression' &&
+        !(parent as any).quasis.some((q: any) => ignore.includes(q.value.cooked.split(':')[0])),
+    )
     .map(({ consequent, alternate }: any) => {
       const values = [];
       if (consequent.type === 'Literal') values.push(consequent.value);
